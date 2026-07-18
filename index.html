@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isla Murray</title>
+<meta name="description" content="Isla Murray. Something is coming.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127773;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #3d2c2a;
+    background: linear-gradient(160deg, #fdf6ef 0%, #fae8d8 45%, #f3d1bd 100%);
+    padding: 2rem;
+  }
+  main { animation: rise 1.4s ease both; max-width: 34rem; }
+  .hello {
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #b0725a;
+    margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.6rem;
+  }
+  p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #6d544e;
+  }
+  .dot {
+    display: inline-block;
+    width: 0.5em; height: 0.5em;
+    border-radius: 50%;
+    background: #d98d6a;
+    margin: 2.2rem auto 0;
+    animation: glow 2.8s ease-in-out infinite;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes glow {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.25); }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <div class="hello">Kia ora, welcome</div>
+    <h1>Isla Murray</h1>
+    <p>This little corner of the internet belongs to Isla.<br>It is just getting started. Watch this space.</p>
+    <span class="dot"></span>
+  </main>
+</body>
+</html>
