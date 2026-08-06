@@ -3,69 +3,450 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Isla Murray</title>
-<meta name="description" content="Isla Murray. Something is coming.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127773;</text></svg>">
+<title>Isla Murray · NZ Youth Alpine Team</title>
+<meta name="description" content="Isla Murray. New Zealand Youth Alpine Team. Slalom and giant slalom racer from Queenstown.">
+<meta property="og:title" content="Isla Murray · NZ Youth Alpine Team">
+<meta property="og:description" content="New Zealand Youth Alpine Team. Slalom and giant slalom, raced at national level.">
+<meta property="og:image" content="https://islamurray.com/images/hero.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9975;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #101114;
+    --panel: #17181d;
+    --ink: #efeee8;
+    --dim: #9b9ba2;
+    --line: #2a2b32;
+    --orange: #e05a1c;
+    --orange-soft: #f0854f;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
+  html { scroll-behavior: smooth; }
   body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     font-family: 'Inter', system-ui, sans-serif;
-    color: #3d2c2a;
-    background: linear-gradient(160deg, #fdf6ef 0%, #fae8d8 45%, #f3d1bd 100%);
-    padding: 2rem;
+    background: var(--bg); color: var(--ink);
+    line-height: 1.6; overflow-x: hidden;
   }
-  main { animation: rise 1.4s ease both; max-width: 34rem; }
-  .hello {
-    font-size: 0.85rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: #b0725a;
-    margin-bottom: 1.4rem;
+  h1, h2, h3, .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 300; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; height: 100svh; min-height: 560px;
+    display: flex; align-items: flex-end; color: #fff;
+    isolation: isolate; overflow: hidden;
   }
-  h1 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 300;
-    font-size: clamp(3rem, 10vw, 5.5rem);
-    line-height: 1.05;
-    margin-bottom: 1.6rem;
+  .hero-img {
+    position: absolute; inset: 0; z-index: -2;
+    background: url('images/hero.jpg') center 25% / cover no-repeat;
+    transform: scale(1.06);
+    animation: heroIn 2.4s cubic-bezier(.2,.6,.2,1) both;
   }
-  p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: #6d544e;
+  @keyframes heroIn { from { transform: scale(1.14); } to { transform: scale(1.06); } }
+  .hero::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(195deg, rgba(16,17,20,0) 35%, rgba(16,17,20,.82) 100%);
   }
-  .dot {
-    display: inline-block;
-    width: 0.5em; height: 0.5em;
-    border-radius: 50%;
-    background: #d98d6a;
-    margin: 2.2rem auto 0;
-    animation: glow 2.8s ease-in-out infinite;
+  .hero-inner { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 6vw 9vh; }
+  .team-badge {
+    display: inline-flex; align-items: center; gap: .7em;
+    font-size: .74rem; letter-spacing: .34em; text-transform: uppercase; font-weight: 600;
+    color: #fff; border: 1px solid rgba(255,255,255,.45);
+    padding: .7em 1.3em .7em 1em; border-radius: 99px;
+    backdrop-filter: blur(4px); background: rgba(16,17,20,.25);
+    opacity: 0; animation: rise 1s .5s ease both;
   }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: none; }
+  .team-badge::before {
+    content: ''; width: .55em; height: .55em; border-radius: 50%;
+    background: var(--orange); box-shadow: 0 0 12px var(--orange);
   }
-  @keyframes glow {
-    0%, 100% { opacity: 0.35; transform: scale(1); }
-    50%      { opacity: 1;    transform: scale(1.25); }
+  .hero h1 {
+    font-size: clamp(3.2rem, 11vw, 8.5rem); line-height: .95; letter-spacing: -.01em;
+    margin: .18em 0 .18em; opacity: 0; animation: rise 1.1s .7s ease both;
+  }
+  .hero-sub {
+    font-size: clamp(.95rem, 1.6vw, 1.15rem); font-weight: 500;
+    opacity: 0; animation: rise 1.1s 1s ease both;
+  }
+  .hero-sub span { opacity: .75; }
+  .scroll-cue {
+    position: absolute; right: 6vw; bottom: 9vh;
+    writing-mode: vertical-rl;
+    font-size: .7rem; letter-spacing: .35em; text-transform: uppercase;
+    opacity: 0; animation: rise 1s 1.5s ease both;
+  }
+  .scroll-cue::after {
+    content: ''; display: block; width: 1px; height: 54px;
+    background: #fff; margin: 12px auto 0;
+    animation: drop 2.2s 2s ease-in-out infinite;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes drop { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+  /* ---------- Shared ---------- */
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 6vw; }
+  .kicker {
+    font-size: .74rem; letter-spacing: .34em; text-transform: uppercase;
+    font-weight: 600; color: var(--orange-soft); margin-bottom: 1.6rem;
+  }
+  .fade { opacity: 0; transform: translateY(34px); transition: opacity .9s ease, transform .9s ease; }
+  .fade.in { opacity: 1; transform: none; }
+  section { position: relative; }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 16vh 0 14vh; }
+  .num-mark {
+    position: absolute; top: 4rem; right: -2vw;
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: clamp(12rem, 28vw, 24rem); line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px #26272e;
+    z-index: 0; pointer-events: none; user-select: none;
+  }
+  .intro-grid {
+    display: grid; gap: 6vw; grid-template-columns: 1.25fr 1fr;
+    align-items: center; position: relative; z-index: 1;
+  }
+  .intro h2 { font-size: clamp(2rem, 4.4vw, 3.6rem); line-height: 1.12; }
+  .intro h2 em { font-style: italic; color: var(--orange-soft); }
+  .intro p { margin-top: 1.8rem; max-width: 46ch; color: var(--dim); }
+  .intro-photo img {
+    width: 100%; display: block; border-radius: 2px;
+    box-shadow: 0 30px 70px -30px rgba(0,0,0,.8);
+  }
+  .intro-photo figcaption {
+    margin-top: .9rem; font-size: .78rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--dim);
+  }
+
+  /* ---------- Full-bleed feature ---------- */
+  .feature { padding: 6vh 0 0; }
+  .feature-img { width: 100vw; margin-left: calc(50% - 50vw); position: relative; overflow: hidden; }
+  .feature-img img { width: 100%; display: block; }
+  .feature-cap {
+    position: absolute; left: 6vw; bottom: 5vh; color: #fff;
+    text-shadow: 0 2px 24px rgba(0,0,0,.6);
+  }
+  .feature-cap .small {
+    font-size: .76rem; letter-spacing: .32em; text-transform: uppercase;
+    margin-bottom: .8rem; opacity: .9;
+  }
+  .feature-cap .big {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(2rem, 5.4vw, 4.6rem); line-height: 1.04;
+  }
+
+  /* ---------- Film strip ---------- */
+  .stripsec { padding: 12vh 0 12vh; }
+  .strip-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2.6rem; }
+  .strip-head .counter { font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .strip-head .counter b { color: var(--ink); font-weight: 500; font-size: 1.6rem; }
+  .strip {
+    display: flex; gap: 2.4vw;
+    width: 100vw; margin-left: calc(50% - 50vw);
+    padding: 0 6vw 2.4rem;
+    overflow-x: auto; scroll-snap-type: x proximity;
+    cursor: grab; scrollbar-width: none;
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip.dragging { cursor: grabbing; scroll-snap-type: none; }
+  .panel { flex: 0 0 auto; scroll-snap-align: center; position: relative; }
+  .panel img {
+    height: 64vh; min-height: 380px; max-height: 720px;
+    width: auto; display: block; border-radius: 2px;
+    user-select: none; -webkit-user-drag: none; pointer-events: none;
+  }
+  .panel figcaption {
+    display: flex; gap: .9rem; align-items: baseline; margin-top: 1rem;
+    font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dim);
+  }
+  .panel figcaption b {
+    font-family: 'Fraunces', serif; font-size: 1.3rem; letter-spacing: 0;
+    color: var(--orange-soft); font-weight: 300;
+  }
+  .strip-hint { margin-top: .6rem; font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: #55565e; }
+
+  /* ---------- Break ---------- */
+  .break {
+    min-height: 88svh;
+    background: url('images/break.jpg') center 30% / cover no-repeat fixed;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; color: #fff; position: relative; isolation: isolate;
+  }
+  .break::after { content: ''; position: absolute; inset: 0; background: rgba(10,10,14,.45); z-index: -1; }
+  .break blockquote h2 {
+    font-size: clamp(1.9rem, 4.5vw, 3.8rem); font-style: italic; line-height: 1.2;
+    max-width: 22ch; padding: 0 6vw; text-shadow: 0 2px 30px rgba(0,0,0,.5);
+  }
+  .break blockquote footer { margin-top: 1.4rem; font-size: .78rem; letter-spacing: .3em; text-transform: uppercase; }
+
+  /* ---------- Results ---------- */
+  .results { padding: 14vh 0 12vh; }
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; margin: 3rem 0 5rem; text-align: center;
+  }
+  .stat-strip .stat b {
+    display: block; font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1; color: var(--ink);
+  }
+  .stat-strip .stat b.orange { color: var(--orange-soft); }
+  .stat-strip .stat span {
+    display: block; margin-top: .6rem;
+    font-size: .74rem; letter-spacing: .3em; text-transform: uppercase; color: var(--dim);
+  }
+  .hl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-bottom: 6rem; }
+  .hl {
+    background: var(--panel); border-radius: 2px;
+    padding: 2rem 1.6rem 1.8rem;
+    border-top: 3px solid var(--orange);
+  }
+  .hl .medal { font-family: 'Fraunces', serif; font-size: 2.2rem; color: var(--orange-soft); line-height: 1; }
+  .hl h3 { font-size: 1.05rem; margin: .9rem 0 .35rem; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .hl p { font-size: .85rem; color: var(--dim); line-height: 1.55; }
+  .season { margin-top: 3.6rem; }
+  .season h3 {
+    font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+    padding-bottom: .8rem; border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .season h3 small {
+    font-family: 'Inter', sans-serif; font-size: .72rem;
+    letter-spacing: .26em; text-transform: uppercase; color: var(--dim);
+  }
+  .rtable { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  .rtable td { padding: .85rem .6rem .85rem 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+  .rtable td.d { white-space: nowrap; color: var(--dim); font-size: .78rem; width: 7.5rem; }
+  .rtable td.e b { font-weight: 600; }
+  .rtable td.e span { color: var(--dim); }
+  .rtable td.r { text-align: right; white-space: nowrap; width: 9rem; }
+  .chip {
+    display: inline-block; min-width: 2.2em; text-align: center;
+    padding: .18em .5em; margin-left: .3em;
+    border-radius: 99px; font-size: .74rem; font-weight: 600;
+    background: #24252c; color: #b8b7bf;
+  }
+  .chip.p1 { background: var(--orange); color: #fff; }
+  .chip.p2 { background: #8a4520; color: #fff; }
+  .chip.p3 { background: #5c3c28; color: #f4d9c8; }
+
+  /* ---------- Footer ---------- */
+  footer.site { background: #0a0b0d; color: var(--dim); padding: 12vh 0 6vh; margin-top: 10vh; }
+  footer.site .serif { color: var(--ink); font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.1; }
+  footer.site .serif em { font-style: italic; color: var(--orange-soft); }
+  .foot-row {
+    display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
+    align-items: baseline; margin-top: 5rem; font-size: .8rem;
+    border-top: 1px solid var(--line); padding-top: 2rem; letter-spacing: .08em;
+  }
+
+  @media (max-width: 820px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .panel img { height: 52vh; min-height: 300px; }
+    .hl-grid { grid-template-columns: 1fr 1fr; }
+    .stat-strip { gap: 1rem; }
+    .rtable td.e span.loc { display: block; }
+    .break { background-attachment: scroll; }
+    .scroll-cue { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .fade { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
-  <main>
-    <div class="hello">Kia ora, welcome</div>
+
+<header class="hero">
+  <div class="hero-img" role="img" aria-label="Isla Murray driving through a slalom gate in a burst of snow"></div>
+  <div class="hero-inner">
+    <span class="team-badge">New Zealand Youth Alpine Team</span>
     <h1>Isla Murray</h1>
-    <p>This little corner of the internet belongs to Isla.<br>It is just getting started. Watch this space.</p>
-    <span class="dot"></span>
-  </main>
+    <p class="hero-sub">Alpine ski racer <span>&middot; slalom &amp; giant slalom &middot; Queenstown, New Zealand</span></p>
+  </div>
+  <span class="scroll-cue" aria-hidden="true">Scroll</span>
+</header>
+
+<section class="intro">
+  <span class="num-mark" aria-hidden="true">NZ</span>
+  <div class="wrap intro-grid">
+    <div class="fade">
+      <p class="kicker">The short version</p>
+      <h2>Racing for Queenstown. Selected for <em>New Zealand.</em></h2>
+      <p>Isla races slalom and giant slalom with the Queenstown Alpine Ski Team, and has been selected for the New Zealand Youth Alpine Team. National Youth Champs, National Points races, northern winters in the Swiss Alps: the long game is under way.</p>
+    </div>
+    <figure class="intro-photo fade">
+      <img src="images/intro.jpg" alt="Isla driving out of a slalom turn at Cardrona" loading="lazy">
+      <figcaption>Cardrona, winter 2026</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="wrap"><p class="kicker fade">The office</p></div>
+  <figure class="feature-img fade">
+    <img src="images/course-wide.jpg" alt="A slalom course set down the mountain, Isla mid-run in the distance">
+    <figcaption class="feature-cap">
+      <div class="small">Race day</div>
+      <div class="big">Gate after gate<br>after gate.</div>
+    </figcaption>
+  </figure>
+</section>
+
+<section class="stripsec">
+  <div class="wrap">
+    <div class="strip-head fade">
+      <p class="kicker" style="margin-bottom:0">The gallery</p>
+      <span class="counter"><b id="strip-cur">01</b> / <span id="strip-total">07</span></span>
+    </div>
+  </div>
+  <div class="strip fade" id="strip" tabindex="0" aria-label="Photo gallery, scrolls sideways">
+    <figure class="panel"><img src="images/spray-1.jpg" alt="Isla carving through a gate in deep snow spray"><figcaption><b>01</b> Full commitment, Cardrona</figcaption></figure>
+    <figure class="panel"><img src="images/mono-carve.jpg" alt="Black and white shot of Isla railing a turn in bib 13" loading="lazy"><figcaption><b>02</b> Bib 13, on edge</figcaption></figure>
+    <figure class="panel"><img src="images/chairlift.jpg" alt="Isla attacking the course beneath the chairlift" loading="lazy"><figcaption><b>03</b> Under the lift line</figcaption></figure>
+    <figure class="panel"><img src="images/mono-attack.jpg" alt="Black and white shot of Isla driving through a slalom gate" loading="lazy"><figcaption><b>04</b> Hands forward, always</figcaption></figure>
+    <figure class="panel"><img src="images/gate-blue.jpg" alt="Isla mid-turn between slalom gates" loading="lazy"><figcaption><b>05</b> Finding the rhythm</figcaption></figure>
+    <figure class="panel"><img src="images/slalom-77.jpg" alt="Isla racing in bib 77" loading="lazy"><figcaption><b>06</b> Race pace</figcaption></figure>
+    <figure class="panel"><img src="images/spray-2.jpg" alt="Isla laying the skis over at speed" loading="lazy"><figcaption><b>07</b> The good kind of sideways</figcaption></figure>
+  </div>
+  <div class="wrap"><p class="strip-hint fade">Drag or scroll sideways</p></div>
+</section>
+
+<section class="break" aria-label="Isla racing through slalom gates with the field behind her">
+  <blockquote class="fade">
+    <h2>&ldquo;First lift up. Last run down.&rdquo;</h2>
+    <footer>The Murray family</footer>
+  </blockquote>
+</section>
+
+<section class="results">
+  <div class="wrap">
+    <p class="kicker fade">The record</p>
+
+    <div class="stat-strip fade">
+      <div class="stat"><b>5</b><span>Seasons racing</span></div>
+      <div class="stat"><b>36</b><span>Race starts</span></div>
+      <div class="stat"><b class="orange">NZ</b><span>Youth Alpine Team</span></div>
+    </div>
+
+    <div class="hl-grid">
+      <div class="hl fade"><div class="medal">NZ</div><h3>Youth Alpine Team</h3><p>Selected for the New Zealand Youth Alpine Team, the national pathway squad for the next generation of racers.</p></div>
+      <div class="hl fade"><div class="medal">1st &times;3</div><h3>Battle of the Basin 2023</h3><p>A clean sweep at Coronet Peak: won every run of the dual slalom.</p></div>
+      <div class="hl fade"><div class="medal">3rd &times;2</div><h3>NZ Junior Champs 2024</h3><p>Bronze in both slalom runs at Coronet Peak.</p></div>
+      <div class="hl fade"><div class="medal">Top 5</div><h3>National Youth Champs</h3><p>Top-five finishes at the national title races in both 2024 and 2025, racing U14.</p></div>
+    </div>
+
+    <div class="season fade">
+      <h3>2025 <small>U14 &middot; New Zealand</small></h3>
+      <table class="rtable">
+        <tr><td class="d">20 Sep</td><td class="e"><b>National Points</b> Slalom <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">4th</span><span class="chip">5th</span></td></tr>
+        <tr><td class="d">19 Sep</td><td class="e"><b>South Island Champs</b> Giant Slalom <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">6th</span><span class="chip">5th</span><span class="chip">6th</span></td></tr>
+        <tr><td class="d">31 Aug</td><td class="e"><b>National Points</b> Slalom <span class="loc">&middot; Mt Hutt</span></td><td class="r"><span class="chip">4th</span></td></tr>
+        <tr><td class="d">30 Aug</td><td class="e"><b>National Youth Champs</b> Giant Slalom <span class="loc">&middot; Mt Hutt</span></td><td class="r"><span class="chip">9th</span></td></tr>
+        <tr><td class="d">29 Aug</td><td class="e"><b>National Youth Champs</b> Slalom <span class="loc">&middot; Mt Hutt</span></td><td class="r"><span class="chip">5th</span><span class="chip">10th</span></td></tr>
+        <tr><td class="d">17 Aug</td><td class="e"><b>Junior Interfield</b> Giant Slalom <span class="loc">&middot; Treble Cone</span></td><td class="r"><span class="chip">6th</span><span class="chip">9th</span></td></tr>
+        <tr><td class="d">26 Jul</td><td class="e"><b>National Points</b> Slalom <span class="loc">&middot; Remarkables</span></td><td class="r"><span class="chip">6th</span><span class="chip">6th</span></td></tr>
+        <tr><td class="d">13 Jul</td><td class="e"><b>Junior Interfield</b> Dual Slalom <span class="loc">&middot; Remarkables</span></td><td class="r"><span class="chip">10th</span><span class="chip">10th</span></td></tr>
+      </table>
+    </div>
+
+    <div class="season fade">
+      <h3>2024 <small>U14 &middot; New Zealand</small></h3>
+      <table class="rtable">
+        <tr><td class="d">28 Sep</td><td class="e"><b>Junior Interfield</b> Slalom <span class="loc">&middot; Mt Hutt</span></td><td class="r"><span class="chip">7th</span></td></tr>
+        <tr><td class="d">21 Sep</td><td class="e"><b>National Youth Champs</b> Giant Slalom <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">5th</span></td></tr>
+        <tr><td class="d">20 Sep</td><td class="e"><b>National Youth Champs</b> Giant Slalom <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">6th</span></td></tr>
+        <tr><td class="d">19 Sep</td><td class="e"><b>National Points</b> Slalom <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">9th</span></td></tr>
+        <tr><td class="d">14 Sep</td><td class="e"><b>Junior Interfield</b> Slalom <span class="loc">&middot; Remarkables</span></td><td class="r"><span class="chip">7th</span></td></tr>
+        <tr><td class="d">9 Sep</td><td class="e"><b>National Points</b> Slalom <span class="loc">&middot; Remarkables</span></td><td class="r"><span class="chip">11th</span><span class="chip">12th</span></td></tr>
+        <tr><td class="d">24 Aug</td><td class="e"><b>Junior Interfield</b> Giant Slalom <span class="loc">&middot; Treble Cone</span></td><td class="r"><span class="chip">5th</span><span class="chip">5th</span></td></tr>
+        <tr><td class="d">28 Jul</td><td class="e"><b>Junior Interfield</b> Slalom <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">10th</span><span class="chip">10th</span></td></tr>
+        <tr><td class="d">21 Jul</td><td class="e"><b>NZ Junior Champs</b> Slalom <span class="loc">&middot; Coronet Peak</span></td><td class="r"><span class="chip p3">3rd</span><span class="chip p3">3rd</span></td></tr>
+        <tr><td class="d">20 Jul</td><td class="e"><b>NZ Junior Champs</b> Giant Slalom <span class="loc">&middot; Coronet Peak</span></td><td class="r"><span class="chip">7th</span><span class="chip">7th</span></td></tr>
+      </table>
+    </div>
+
+    <div class="season fade">
+      <h3>2024 <small>Northern winter &middot; Switzerland</small></h3>
+      <table class="rtable">
+        <tr><td class="d">27 Jan</td><td class="e"><b>Grand Prix Migros</b> Slalom, big course <span class="loc">&middot; Nendaz</span></td><td class="r"><span class="chip">DNF</span></td></tr>
+        <tr><td class="d">26 Jan</td><td class="e"><b>Welsh Champs</b> Slalom <span class="loc">&middot; Champ&eacute;ry</span></td><td class="r"><span class="chip">4th</span><span class="chip">4th</span></td></tr>
+        <tr><td class="d">24 Jan</td><td class="e"><b>Welsh Champs</b> Giant Slalom <span class="loc">&middot; Champ&eacute;ry</span></td><td class="r"><span class="chip">8th</span></td></tr>
+        <tr><td class="d">20 Jan</td><td class="e"><b>Coupe Raiffeisen</b> Giant Slalom <span class="loc">&middot; Les Diablerets</span></td><td class="r"><span class="chip">25th</span></td></tr>
+        <tr><td class="d">14 Jan</td><td class="e"><b>Coupe Raiffeisen</b> Slalom <span class="loc">&middot; Rougemont</span></td><td class="r"><span class="chip">DNF</span></td></tr>
+      </table>
+    </div>
+
+    <div class="season fade">
+      <h3>2023 <small>U12 &middot; New Zealand</small></h3>
+      <table class="rtable">
+        <tr><td class="d">9 Sep</td><td class="e"><b>South Island Champs</b> Giant Slalom <span class="loc">&middot; Mt Hutt</span></td><td class="r"><span class="chip">9th</span><span class="chip">10th</span></td></tr>
+        <tr><td class="d">7 Sep</td><td class="e"><b>Battle of the Basin</b> Dual Slalom <span class="loc">&middot; Coronet Peak</span></td><td class="r"><span class="chip p1">1st</span><span class="chip p1">1st</span><span class="chip p1">1st</span></td></tr>
+        <tr><td class="d">26 Aug</td><td class="e"><b>Junior Interfield</b> Slalom <span class="loc">&middot; Treble Cone</span></td><td class="r"><span class="chip">10th</span><span class="chip">20th</span></td></tr>
+        <tr><td class="d">30 Jul</td><td class="e"><b>Junior Interfield</b> Slalom stubbies <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">13th</span><span class="chip">13th</span></td></tr>
+        <tr><td class="d">22 Jul</td><td class="e"><b>NZ Junior Champs</b> Dual Slalom <span class="loc">&middot; Remarkables</span></td><td class="r"><span class="chip">9th</span><span class="chip">10th</span></td></tr>
+        <tr><td class="d">21 Jul</td><td class="e"><b>NZ Junior Champs</b> Giant Slalom <span class="loc">&middot; Remarkables</span></td><td class="r"><span class="chip">14th</span></td></tr>
+      </table>
+    </div>
+
+    <div class="season fade">
+      <h3>2022 <small>U12 &middot; New Zealand &middot; racing two age groups up</small></h3>
+      <table class="rtable">
+        <tr><td class="d">1 Oct</td><td class="e"><b>Junior Interfield</b> Giant Slalom <span class="loc">&middot; Cardrona</span></td><td class="r"><span class="chip">10th</span><span class="chip">10th</span></td></tr>
+        <tr><td class="d">17 Sep</td><td class="e"><b>Junior Interfield</b> Slalom <span class="loc">&middot; Remarkables</span></td><td class="r"><span class="chip">15th</span><span class="chip">18th</span></td></tr>
+        <tr><td class="d">8 Sep</td><td class="e"><b>Battle of the Basin</b> Dual Slalom <span class="loc">&middot; Coronet Peak</span></td><td class="r"><span class="chip p3">3rd</span></td></tr>
+        <tr><td class="d">21 Aug</td><td class="e"><b>Junior Interfield</b> Giant Slalom <span class="loc">&middot; Treble Cone</span></td><td class="r"><span class="chip">13th</span></td></tr>
+        <tr><td class="d">24 Jul</td><td class="e"><b>NZ Junior Champs</b> Dual Slalom <span class="loc">&middot; Coronet Peak</span></td><td class="r"><span class="chip">10th</span><span class="chip">11th</span></td></tr>
+        <tr><td class="d">23 Jul</td><td class="e"><b>Junior Interfield</b> Dual Slalom <span class="loc">&middot; Coronet Peak</span></td><td class="r"><span class="chip">17th</span><span class="chip">14th</span></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <p class="serif fade">Watch this space.<br><em>The mountain is patient. So is she.</em></p>
+    <div class="foot-row">
+      <span>&copy; <span id="yr">2026</span> Isla Murray</span>
+      <span>Queenstown, Aotearoa New Zealand</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver(entries => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  const strip = document.getElementById('strip');
+  if (strip) {
+    const panels = [...strip.querySelectorAll('.panel')];
+    document.getElementById('strip-total').textContent = String(panels.length).padStart(2, '0');
+    const cur = document.getElementById('strip-cur');
+    strip.addEventListener('scroll', () => {
+      const mid = strip.scrollLeft + strip.clientWidth / 2;
+      let best = 0, bd = Infinity;
+      panels.forEach((p, i) => {
+        const c = p.offsetLeft + p.offsetWidth / 2;
+        const d = Math.abs(c - mid);
+        if (d < bd) { bd = d; best = i; }
+      });
+      cur.textContent = String(best + 1).padStart(2, '0');
+    }, { passive: true });
+    let down = false, startX = 0, startScroll = 0;
+    strip.addEventListener('pointerdown', e => {
+      down = true; startX = e.clientX; startScroll = strip.scrollLeft;
+      strip.classList.add('dragging'); strip.setPointerCapture(e.pointerId);
+    });
+    strip.addEventListener('pointermove', e => {
+      if (down) strip.scrollLeft = startScroll - (e.clientX - startX);
+    });
+    ['pointerup', 'pointercancel'].forEach(ev => strip.addEventListener(ev, () => {
+      down = false; strip.classList.remove('dragging');
+    }));
+  }
+</script>
 </body>
 </html>
